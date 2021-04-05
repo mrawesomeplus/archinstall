@@ -46,4 +46,12 @@ systemctl enable bluetooth
 systemctl enable cups.service
 systemctl enable sshd
 systemctl enable fstrim.timer
+
+# Install yay
+git clone https://aur.archlinux.org/yay.git
+cd ~/yay
+makepkg -csi
+cd ~
+
+# Finished
 echo -n "Unmount and reboot"
