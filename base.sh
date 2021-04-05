@@ -22,6 +22,8 @@ sed -i '93s/.//' /etc/pacman.conf
 
 # Install packages
 pacman -Sy --noconfirm grub efibootmgr networkmanager network-manager-applet reflector base-devel linux-headers bluez bluez-utils cups pulseaudio bash-completion openssh reflector virt-manager qemu edk2-ovmf bridge-utils dnsmasq ebtables libvirt os-prober dhcpcd
+pacman -S --noconfirm amd-ucode
+# pacman -S intel-ucode
 
 # Install grub
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
