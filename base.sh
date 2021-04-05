@@ -34,6 +34,7 @@ echo -n "Name : "
 read name
 useradd -mG wheel -s /bin/bash $name
 passwd $name
+sed -i '82s/.//' /etc/sudoers
 
 # Enable services
 ip link
@@ -45,4 +46,4 @@ systemctl enable bluetooth
 systemctl enable cups.service
 systemctl enable sshd
 systemctl enable fstrim.timer
-echo "Unmount and reboot"
+echo -n "Unmount and reboot"
