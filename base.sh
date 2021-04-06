@@ -21,9 +21,7 @@ sed -i '92s/.//' /etc/pacman.conf
 sed -i '93s/.//' /etc/pacman.conf
 
 # Install packages
-pacman -Sy --noconfirm grub efibootmgr networkmanager network-manager-applet reflector base-devel linux-headers bluez bluez-utils cups pulseaudio bash-completion openssh reflector virt-manager qemu edk2-ovmf bridge-utils dnsmasq ebtables libvirt os-prober dhcpcd
-pacman -S --noconfirm amd-ucode
-# pacman -S --noconfirm intel-ucode
+pacman -Sy --noconfirm grub efibootmgr amd-ucode networkmanager network-manager-applet reflector base-devel linux-headers bluez bluez-utils cups pulseaudio bash-completion openssh reflector virt-manager qemu edk2-ovmf bridge-utils dnsmasq ebtables libvirt os-prober dhcpcd ntfs-3g
 
 # Install grub
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
@@ -37,14 +35,11 @@ passwd $name
 sed -i '82s/.//' /etc/sudoers
 
 # Enable services
-ip link
-echo -n "Enter network device : "
-read networkdevice
-systemctl enable NetworkManager
-systemctl enable dhcpcd@$networkdevice.service
-systemctl enable bluetooth
+systemctl enable NetworkManager.service
+systemctl enable dhcpcd.service
+systemctl enable bluetooth.service
 systemctl enable cups.service
-systemctl enable sshd
+systemctl enable sshd.service
 systemctl enable fstrim.timer
 
 # Finished
