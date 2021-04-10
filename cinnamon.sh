@@ -3,7 +3,7 @@
 su
 
 # Install packages
-sudo pacman -Sy cinnamon lightdm-gtk-greeter lightdm-gtk-greeter-settings gedit gdisk mpv nemo gnome-terminal 
+sudo pacman -Sy cinnamon lightdm-gtk-greeter lightdm-gtk-greeter-settings gedit gdisk mpv nemo terminator blueberry gimp libre-office 
 sudo pacman -R xf86-video-intel
 
 
