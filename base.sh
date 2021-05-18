@@ -21,7 +21,7 @@ sed -i '92s/.//' /etc/pacman.conf
 sed -i '93s/.//' /etc/pacman.conf
 
 # Install packages
-pacman -Sy --noconfirm grub efibootmgr amd-ucode networkmanager network-manager-applet reflector base-devel linux-headers bluez bluez-utils cups pulseaudio bash-completion openssh reflector virt-manager qemu edk2-ovmf bridge-utils dnsmasq ebtables libvirt os-prober dhcpcd ntfs-3g
+pacman -Sy grub grub-btrfs efibootmgr amd-ucode networkmanager network-manager-applet reflector base-devel linux-headers bluez bluez-utils cups pulseaudio bash-completion openssh reflector virt-manager qemu edk2-ovmf bridge-utils dnsmasq ebtables libvirt openbsd-netcat os-prober dhcpcd ntfs-3g xdg-user-dirs xdg-utils nfs-utils inetutils dnsutils firewalld
 
 # Install grub
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
@@ -41,6 +41,7 @@ systemctl enable bluetooth.service
 systemctl enable cups.service
 systemctl enable sshd.service
 systemctl enable fstrim.timer
+systemctl enable firewalld
 
 # Finished
 printf "\e[1;32mExit, unmount and reboot.\e[0m"
