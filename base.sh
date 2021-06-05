@@ -17,11 +17,16 @@ echo "127.0.0.1 localhost"\n"::1 localhost"\n"127.0.1.1 $HOSTNAME.localdomain $H
 passwd
 
 # Enable multilib
-sed -i '92s/.//' /etc/pacman.conf
 sed -i '93s/.//' /etc/pacman.conf
+sed -i '94s/.//' /etc/pacman.conf
 
 # Install packages
-pacman -Sy efibootmgr amd-ucode networkmanager network-manager-applet reflector base-devel linux-headers bluez bluez-utils cups pulseaudio bash-completion openssh reflector virt-manager qemu edk2-ovmf bridge-utils dnsmasq ebtables libvirt openbsd-netcat os-prober dhcpcd ntfs-3g xdg-user-dirs xdg-utils nfs-utils inetutils dnsutils firewalld
+pacman -Sy efibootmgr networkmanager network-manager-applet reflector base-devel linux-headers bluez bluez-utils cups pulseaudio bash-completion openssh reflector virt-manager qemu edk2-ovmf bridge-utils dnsmasq ebtables libvirt openbsd-netcat os-prober dhcpcd ntfs-3g xdg-user-dirs xdg-utils nfs-utils inetutils dnsutils firewalld acpi acpi_call acpid
+# pacman -S wpa_supplicant wireless_tools iwd tlp
+
+# Ucode
+# pacman -S amd-ucode
+# pacman -S intel-ucode
 
 # Install grub
 # pacman -S grub grub-btrfs
@@ -43,6 +48,10 @@ systemctl enable cups.service
 systemctl enable sshd.service
 systemctl enable fstrim.timer
 systemctl enable firewalld
+systemctl enable acpid
+# systemctl enable tlp
+# systemctl enable iwd
+# systemctl enable wpa_supplicant
 
 # Finished
 printf "\e[1;32mExit, unmount and reboot.\e[0m"
